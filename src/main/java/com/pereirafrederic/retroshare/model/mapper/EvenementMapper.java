@@ -4,6 +4,7 @@ import java.util.AbstractCollection;
 
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import com.pereirafrederic.retroshare.model.dto.out.full.EvenementFull;
 import com.pereirafrederic.retroshare.model.dto.out.light.EvenementLight;
 import com.pereirafrederic.retroshare.model.entite.Evenement;
 
-@Mapper
+@Mapper(componentModel="spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface EvenementMapper {
 
 	EvenementMapper INSTANCE = Mappers.getMapper(EvenementMapper.class);

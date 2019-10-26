@@ -4,6 +4,7 @@ import java.util.AbstractCollection;
 
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import com.pereirafrederic.retroshare.model.dto.out.light.PlaceLight;
 import com.pereirafrederic.retroshare.model.entite.Place;
 import com.pereirafrederic.retroshare.model.entite.Utilisateur;
 
-@Mapper
+@Mapper(componentModel="spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PlaceMapper {
 
 	PlaceMapper INSTANCE = Mappers.getMapper(PlaceMapper.class);
