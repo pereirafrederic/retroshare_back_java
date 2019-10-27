@@ -15,7 +15,12 @@ import lombok.Setter;
 @Entity
 @Table(name = "notation")
 public class Notation extends AbstractCommun {
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8178816785461872462L;
+
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "utilisateur_id", referencedColumnName = "id", nullable = false)

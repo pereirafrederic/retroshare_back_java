@@ -1,36 +1,31 @@
 package com.pereirafrederic.retroshare.model.mapper;
 
-import java.util.AbstractCollection;
+import java.util.ArrayList;
 
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
-import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.pereirafrederic.retroshare.model.dto.in.EvenementForm;
-import com.pereirafrederic.retroshare.model.dto.out.full.EvenementFull;
 import com.pereirafrederic.retroshare.model.dto.out.full.UtilisateurFull;
-import com.pereirafrederic.retroshare.model.dto.out.light.UtilisateurLight;
+import com.pereirafrederic.retroshare.model.dto.out.light.NotationLight;
+import com.pereirafrederic.retroshare.model.dto.out.light.PlaceLight;
 import com.pereirafrederic.retroshare.model.entite.Utilisateur;
 
-@Mapper(componentModel="spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
-public interface UtilisateurMapper {
+@Service
+public class UtilisateurMapper {
 
-	UtilisateurMapper INSTANCE = Mappers.getMapper(UtilisateurMapper.class);
+	public UtilisateurFull toFullDto(Utilisateur in) {
 
-	AbstractCollection<UtilisateurFull> toArrayFullDto(
-			AbstractCollection<Utilisateur> entites);
+		UtilisateurFull out = new UtilisateurFull();
+		out.setDateNaissance(in.getDateNaissance());
+		out.setDescription(in.getDescription());
+		out.setEmail(in.getEmail());
+		out.setId(in.getId());
+		out.setNom(in.getNom());
+		out.setNotations(new ArrayList<NotationLight>());
+		out.setNumeroTelephone(in.getNumeroTelephone());
+		out.setPlaces(new ArrayList<PlaceLight>());
+		out.setPseudo(in.getPseudo());
+		return out;
 
-	UtilisateurFull toFullDto(Utilisateur entite);
-
-	UtilisateurLight toLightDto(Utilisateur entite);
-
-	@InheritInverseConfiguration
-	Utilisateur toEntity(EvenementFull dto);
-
-	@InheritInverseConfiguration
-	Utilisateur toEntity(EvenementForm dto);
+	}
 
 }

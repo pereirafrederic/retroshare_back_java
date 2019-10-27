@@ -10,7 +10,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 public class EvenementForm {
-	
+
 	private Long id;
 
 }

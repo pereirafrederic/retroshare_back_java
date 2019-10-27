@@ -5,7 +5,7 @@ CREATE TABLE utilisateur (
     pseudo varchar(255),
     email varchar(255),
     date_naissance date,
-    numero varchar(255),
+    numero_telephone varchar(255),
     description text
 );
 

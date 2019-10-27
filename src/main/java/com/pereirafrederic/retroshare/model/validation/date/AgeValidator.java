@@ -24,7 +24,7 @@ public class AgeValidator implements ConstraintValidator<Age, Object> {
 	}
 
 	@Override
-	@SuppressWarnings({ "squid:MethodCyclomaticComplexity" })
+	//@SuppressWarnings({ "squid:MethodCyclomaticComplexity" })
 	public boolean isValid(Object value,
 			ConstraintValidatorContext constraintContext) {
 

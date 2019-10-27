@@ -1,42 +1,30 @@
 package com.pereirafrederic.retroshare.model.dto.out.light;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
 
-import org.joda.time.LocalDateTime;
-
-import com.pereirafrederic.retroshare.model.dto.CommunDto;
 import com.pereirafrederic.retroshare.model.dto.NomDto;
+import com.pereirafrederic.retroshare.model.dto.NomPeriodeDto;
 import com.pereirafrederic.retroshare.model.enums.EvenementStatut;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Builder
-public class EvenementLight extends CommunDto {
+@NoArgsConstructor
+public class EvenementLight extends NomPeriodeDto {
 
-	@NotBlank
-	@NotNull
-	private String nom;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2725173972599112953L;
 
 	@NotNull
 	private UtilisateurLight organisateur;
 
 	@NotNull
-	private LocalDateTime dateDebut;
-
-	private LocalDateTime dateFin;
-
-	@NotNull
-	private EvenementStatut statut = EvenementStatut.EN_CONSTRUCTION;
+	private EvenementStatut statut;
 
 	private String description;
 

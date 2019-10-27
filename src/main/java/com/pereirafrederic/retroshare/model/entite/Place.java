@@ -26,6 +26,11 @@ import com.pereirafrederic.retroshare.model.enums.PlaceType;
 @Table(name = "place")
 public class Place extends AbstractCommun {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8569803870330725554L;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "utilisateur_id", referencedColumnName = "id", nullable = false)
 	private Utilisateur utilisateur;
@@ -48,7 +53,7 @@ public class Place extends AbstractCommun {
 
 	@Positive
 	private float prix;
-	
+
 	@OneToMany(targetEntity = Notation.class, fetch = FetchType.LAZY, mappedBy = "place")
 	private List<Notation> notations;
 

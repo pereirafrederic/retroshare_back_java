@@ -16,7 +16,8 @@ public class FlywayConfig {
 	@Bean
 	Flyway flyway() {
 
-		Flyway flyway = Flyway.configure().baselineOnMigrate(true).dataSource(dataSource).load();
+		Flyway flyway = Flyway.configure().baselineOnMigrate(true)
+				.dataSource(dataSource).load();
 		flyway.migrate();
 
 		return flyway;

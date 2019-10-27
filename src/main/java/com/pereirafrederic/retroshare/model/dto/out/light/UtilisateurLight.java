@@ -4,26 +4,29 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import org.joda.time.LocalDate;
 
-import com.pereirafrederic.retroshare.model.dto.CommunDto;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.pereirafrederic.retroshare.model.dto.NomDto;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Builder
-public class UtilisateurLight extends CommunDto {
+@NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PUBLIC)
+@JsonRootName("Utilisateur")
+@JsonPropertyOrder(alphabetic = true)
+public class UtilisateurLight extends NomDto {
 
-	@NotNull
-	@NotBlank
-	private String nom;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1179885087222053679L;
 
 	private String pseudo;
 

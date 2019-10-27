@@ -1,8 +1,8 @@
 package com.pereirafrederic.retroshare.controller;
 
-import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,34 +15,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pereirafrederic.retroshare.model.dto.in.UtilisateurForm;
 import com.pereirafrederic.retroshare.model.dto.out.full.UtilisateurFull;
+import com.pereirafrederic.retroshare.model.entite.Utilisateur;
 import com.pereirafrederic.retroshare.model.mapper.UtilisateurMapper;
 import com.pereirafrederic.retroshare.service.UtilisateurService;
 
 @RestController
 @RequestMapping("utilisateur")
-public class UtilisateurController extends AbstractController {
+public class UtilisateurController extends AbstractDtoController {
 
 	@Autowired
 	private UtilisateurService service;
 
+	@Autowired
+	private UtilisateurMapper mapper;
+
 	@GetMapping()
-	public AbstractCollection<UtilisateurFull> getAll() {
-		return UtilisateurMapper.INSTANCE.toArrayFullDto(service.getAll());
+	public List<UtilisateurFull> getAll() {
+		ArrayList<Utilisateur> all = service.getAll();
+		List<UtilisateurFull> retour = new ArrayList<UtilisateurFull>();
+		all.stream().forEach(util -> retour.add(mapper.toFullDto(util)));
+
+		return retour;
 	}
 
 	@GetMapping(value = "/{id}")
 	public UtilisateurFull get(@PathVariable(value = "id") Long id) {
-		return UtilisateurMapper.INSTANCE.toFullDto(service.get(id));
+		return mapper.toFullDto(service.get(id));
 	}
 
 	@PostMapping
 	public UtilisateurFull post(@RequestBody UtilisateurForm in) {
-		return UtilisateurMapper.INSTANCE.toFullDto(service.post(in));
+		return mapper.toFullDto(service.post(in));
 	}
 
 	@PutMapping
 	public UtilisateurFull put(@RequestBody UtilisateurForm in) {
-		return UtilisateurMapper.INSTANCE.toFullDto(service.put(in));
+		return mapper.toFullDto(service.put(in));
 	}
 
 	@DeleteMapping(value = "/{id")

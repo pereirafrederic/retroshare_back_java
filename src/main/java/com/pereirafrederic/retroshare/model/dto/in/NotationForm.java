@@ -12,13 +12,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class NotationForm {
-	
+
 	@NotNull
-	private Long  idPlace;
-	
+	private Long idPlace;
+
 	@NotNull
 	private Long idUtilisateur;
-	
+
 	@NotNull
 	private int note;
 

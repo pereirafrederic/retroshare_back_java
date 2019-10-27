@@ -1,23 +1,20 @@
 package com.pereirafrederic.retroshare.model.dto.out.light;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.pereirafrederic.retroshare.model.dto.CommunDto;
+import com.pereirafrederic.retroshare.model.dto.NomDto;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class LieuLight extends CommunDto {
+@NoArgsConstructor
+public class LieuLight extends NomDto {
 
-	@NotBlank
-	@NotNull
-	private String nom;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1415417184384313823L;
 	private float Latitude;
 	private float Longitude;
 

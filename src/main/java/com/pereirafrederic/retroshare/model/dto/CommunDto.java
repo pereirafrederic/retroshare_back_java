@@ -1,25 +1,29 @@
 package com.pereirafrederic.retroshare.model.dto;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import org.joda.time.LocalDateTime;
-
-import com.pereirafrederic.retroshare.model.validation.date.Past;
-
 @Getter
 @Setter
-public class CommunDto {
+public class CommunDto implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2461033255031169805L;
+	
 	@NotNull
 	private Long id;
 
-	@Past
-	@NotNull
-	private LocalDateTime dateCreation;
-
-	@Past
-	private LocalDateTime datemodification;
+	/*
+	 * @Past
+	 * 
+	 * @NotNull private LocalDateTime dateCreation;
+	 * 
+	 * @Past private LocalDateTime datemodification;
+	 */
 }

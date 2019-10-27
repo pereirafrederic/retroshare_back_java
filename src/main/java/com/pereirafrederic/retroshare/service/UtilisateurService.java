@@ -13,7 +13,7 @@ import com.pereirafrederic.retroshare.repository.UtilisateurRepo;
 
 @Service
 public class UtilisateurService {
-	
+
 	@Autowired
 	private UtilisateurRepo repo;
 
@@ -24,7 +24,7 @@ public class UtilisateurService {
 
 	@Transactional(readOnly = true)
 	public Utilisateur get(Long id) {
-		return repo.findById(id).orElseThrow( () -> new RuntimeException());
+		return repo.findById(id).orElseThrow(() -> new RuntimeException());
 	}
 
 	@Transactional(propagation = Propagation.MANDATORY)

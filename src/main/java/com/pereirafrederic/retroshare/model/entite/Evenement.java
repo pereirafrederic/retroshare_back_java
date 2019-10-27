@@ -2,7 +2,7 @@ package com.pereirafrederic.retroshare.model.entite;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,20 +14,26 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import org.joda.time.LocalDateTime;
 
+import com.pereirafrederic.retroshare.model.converter.LocalDateConverter;
 import com.pereirafrederic.retroshare.model.enums.EvenementStatut;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "evenement", schema = "retroshare")
 public class Evenement extends AbstractCommun {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1593025225037746525L;
 
 	@NotBlank
 	@NotNull
@@ -39,8 +45,10 @@ public class Evenement extends AbstractCommun {
 	private Utilisateur organisateur;
 
 	@NotNull
+	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime dateDebut;
 
+	@Convert(converter = LocalDateConverter.class)
 	private LocalDateTime dateFin;
 
 	@NotNull
@@ -61,14 +69,11 @@ public class Evenement extends AbstractCommun {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "theme_id", referencedColumnName = "id", nullable = false)
 	private Theme theme;
-	
-	
+
 	@OneToMany(targetEntity = Place.class, fetch = FetchType.LAZY, mappedBy = "evenement")
 	private List<Place> places;
-	
+
 	@OneToMany(targetEntity = Notation.class, fetch = FetchType.LAZY, mappedBy = "evenement")
 	private List<Notation> notations;
-	
-	
 
 }

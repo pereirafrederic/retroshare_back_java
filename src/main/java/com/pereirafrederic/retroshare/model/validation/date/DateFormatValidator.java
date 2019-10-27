@@ -32,7 +32,7 @@ public class DateFormatValidator implements
 	}
 
 	@Override
-	@SuppressWarnings({ "squid:S1166" })
+	//@SuppressWarnings({ "squid:S1166" })
 	// assumed because we do not want to
 	// polluate logs
 	public boolean isValid(String value,

@@ -20,13 +20,18 @@ import lombok.Setter;
 @Table(name = "lieu")
 public class Lieu extends AbstractCommun {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2442971198064315715L;
+
 	@NotBlank
 	@NotNull
 	private String nom;
 
 	private float Latitude;
 	private float Longitude;
-	
+
 	@OneToMany(targetEntity = Evenement.class, fetch = FetchType.LAZY, mappedBy = "lieu")
 	private List<Evenement> evenements;
 
