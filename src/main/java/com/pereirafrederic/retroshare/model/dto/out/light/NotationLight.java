@@ -18,9 +18,6 @@ public class NotationLight extends CommunDto {
 	 */
 	private static final long serialVersionUID = 5989892137155884991L;
 
-	@NotNull
-	private UtilisateurLight utilisateur;
-
 	private PlaceLight place;
 
 	private EvenementLight evenement;

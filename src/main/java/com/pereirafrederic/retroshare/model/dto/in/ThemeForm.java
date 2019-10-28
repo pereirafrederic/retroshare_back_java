@@ -5,8 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class EvenementForm extends UpdateIdForm{
+public class ThemeForm extends UpdateIdForm{
 
-
-
+	private String nom;
+	private String theme;
+	
 }

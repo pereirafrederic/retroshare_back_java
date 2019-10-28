@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pereirafrederic.retroshare.model.dto.in.EvenementForm;
 import com.pereirafrederic.retroshare.model.entite.Evenement;
+import com.pereirafrederic.retroshare.model.entite.Notation;
 import com.pereirafrederic.retroshare.repository.EvenementRepo;
 
 @Service
@@ -49,7 +50,9 @@ public class EvenementService extends AbstractService {
 
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void delete(Long id) {
+		Evenement entity = get(id);
 
+		repo.delete(entity);
 	}
 
 }

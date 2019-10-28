@@ -1,5 +1,6 @@
 package com.pereirafrederic.retroshare.model.entite;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -23,15 +24,15 @@ public class Notation extends AbstractCommun {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "utilisateur_id", referencedColumnName = "id", nullable = false)
-	private Utilisateur utilisateur;
+	@JoinColumn(name = "juge_id", referencedColumnName = "id", nullable = false)
+	private Utilisateur juge;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "place_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "place_id", referencedColumnName = "id", nullable = true)
 	private Place place;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "evenement_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "evenement_id", referencedColumnName = "id", nullable = true)
 	private Evenement evenement;
 
 	@NotNull

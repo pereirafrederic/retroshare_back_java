@@ -6,34 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.pereirafrederic.retroshare.model.dto.CommunDto;
-import com.pereirafrederic.retroshare.model.enums.PlaceMotifRefus;
-import com.pereirafrederic.retroshare.model.enums.PlaceStatut;
-import com.pereirafrederic.retroshare.model.enums.PlaceType;
+import com.pereirafrederic.retroshare.model.dto.out.light.EvenementLight;
+import com.pereirafrederic.retroshare.model.dto.out.light.PlaceLight;
+import com.pereirafrederic.retroshare.model.dto.out.light.UtilisateurLight;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class PlaceFull extends CommunDto {
+public class PlaceFull extends PlaceLight {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4152986795883230113L;
 
-	private UtilisateurFull utilisateur;
+	private UtilisateurLight utilisateur;
 
 	@NotNull
-	private EvenementFull evenement;
-
-	@NotNull
-	private PlaceType typePlace;
-
-	@NotNull
-	private PlaceStatut statut;
-
-	private PlaceMotifRefus motifRefus;
-
-	private float prix;
+	private EvenementLight evenement;
 
 }

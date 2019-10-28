@@ -6,12 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.pereirafrederic.retroshare.model.dto.CommunDto;
+import com.pereirafrederic.retroshare.model.dto.out.light.NotationLight;
+import com.pereirafrederic.retroshare.model.dto.out.light.UtilisateurLight;
 
 @Getter
 @Setter
 @NoArgsConstructor
-public class NotationFull extends CommunDto {
+public class NotationFull extends NotationLight {
 
 	/**
 	 * 
@@ -19,13 +20,7 @@ public class NotationFull extends CommunDto {
 	private static final long serialVersionUID = 6865352891580697812L;
 
 	@NotNull
-	private UtilisateurFull utilisateur;
+	private UtilisateurLight juge;
 
-	private PlaceFull place;
-
-	private EvenementFull evenement;
-
-	@NotNull
-	private int note = 0;
 
 }

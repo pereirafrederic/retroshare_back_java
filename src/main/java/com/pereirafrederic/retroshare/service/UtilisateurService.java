@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pereirafrederic.retroshare.model.dto.in.UtilisateurForm;
+import com.pereirafrederic.retroshare.model.entite.Place;
 import com.pereirafrederic.retroshare.model.entite.Utilisateur;
 import com.pereirafrederic.retroshare.repository.UtilisateurRepo;
 
@@ -41,7 +42,9 @@ public class UtilisateurService {
 
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void delete(Long id) {
+		Utilisateur entity = get(id);
 
+		repo.delete(entity);
 	}
 
 }

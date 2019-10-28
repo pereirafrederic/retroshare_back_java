@@ -2,6 +2,7 @@ package com.pereirafrederic.retroshare.model.entite;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,6 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
 import com.pereirafrederic.retroshare.model.converter.LocalDateConverter;
@@ -27,7 +29,7 @@ import com.pereirafrederic.retroshare.model.enums.EvenementStatut;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "evenement", schema = "retroshare")
+@Table(name = "evenement")
 public class Evenement extends AbstractCommun {
 
 	/**
@@ -41,15 +43,17 @@ public class Evenement extends AbstractCommun {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "utilisateur_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "organisateur_id", referencedColumnName = "id", nullable = false)
 	private Utilisateur organisateur;
 
 	@NotNull
 	@Convert(converter = LocalDateConverter.class)
-	private LocalDateTime dateDebut;
+	@Column(name="date_debut")
+	private DateTime dateDebut;
 
+	@Column(name="date_fin")
 	@Convert(converter = LocalDateConverter.class)
-	private LocalDateTime dateFin;
+	private DateTime dateFin;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)

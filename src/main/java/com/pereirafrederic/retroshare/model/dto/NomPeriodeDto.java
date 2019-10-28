@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
 @Getter
@@ -17,8 +18,8 @@ public class NomPeriodeDto extends NomDto {
 	private static final long serialVersionUID = 8233660620942464849L;
 
 	@NotNull
-	private LocalDateTime dateDebut;
+	private DateTime dateDebut;
 
-	private LocalDateTime dateFin;
+	private DateTime dateFin;
 
 }

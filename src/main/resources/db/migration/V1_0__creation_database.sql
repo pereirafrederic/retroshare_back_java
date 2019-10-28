@@ -64,7 +64,7 @@ CREATE TABLE notation(
     juge_id int,
     place_id int,
     evenement_id int,
-    prix double,
+    note int,
  FOREIGN KEY (evenement_id ) REFERENCES evenement(id),
  FOREIGN KEY (place_id ) REFERENCES place(id),
  FOREIGN KEY (juge_id ) REFERENCES utilisateur(id)

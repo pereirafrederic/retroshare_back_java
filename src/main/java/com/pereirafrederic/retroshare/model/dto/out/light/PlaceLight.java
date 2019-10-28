@@ -22,10 +22,7 @@ public class PlaceLight extends CommunDto {
 	 */
 	private static final long serialVersionUID = 4846942403310862562L;
 
-	private UtilisateurLight utilisateur;
 
-	@NotNull
-	private EvenementLight evenement;
 
 	@NotNull
 	private PlaceType typePlace;

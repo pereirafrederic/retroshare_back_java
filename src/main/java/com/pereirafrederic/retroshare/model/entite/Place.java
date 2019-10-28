@@ -2,6 +2,7 @@ package com.pereirafrederic.retroshare.model.entite;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -42,6 +43,7 @@ public class Place extends AbstractCommun {
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
+	@Column(name="type_place")
 	private PlaceType typePlace;
 
 	@NotNull
@@ -49,6 +51,7 @@ public class Place extends AbstractCommun {
 	private PlaceStatut statut;
 
 	@Enumerated(EnumType.STRING)
+	@Column(name="motif_refus")
 	private PlaceMotifRefus motifRefus;
 
 	@Positive

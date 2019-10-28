@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pereirafrederic.retroshare.model.dto.in.UtilisateurForm;
 import com.pereirafrederic.retroshare.model.dto.out.full.UtilisateurFull;
+import com.pereirafrederic.retroshare.model.dto.out.light.UtilisateurLight;
 import com.pereirafrederic.retroshare.model.entite.Utilisateur;
 import com.pereirafrederic.retroshare.model.mapper.UtilisateurMapper;
 import com.pereirafrederic.retroshare.service.UtilisateurService;
@@ -30,27 +31,23 @@ public class UtilisateurController extends AbstractDtoController {
 	private UtilisateurMapper mapper;
 
 	@GetMapping()
-	public List<UtilisateurFull> getAll() {
-		ArrayList<Utilisateur> all = service.getAll();
-		List<UtilisateurFull> retour = new ArrayList<UtilisateurFull>();
-		all.stream().forEach(util -> retour.add(mapper.toFullDto(util)));
-
-		return retour;
+	public List<UtilisateurLight> getAll() {
+		return mapper.mapListToLight(service.getAll());
 	}
 
 	@GetMapping(value = "/{id}")
 	public UtilisateurFull get(@PathVariable(value = "id") Long id) {
-		return mapper.toFullDto(service.get(id));
+		return mapper.mapToFullDto(service.get(id));
 	}
 
 	@PostMapping
 	public UtilisateurFull post(@RequestBody UtilisateurForm in) {
-		return mapper.toFullDto(service.post(in));
+		return mapper.mapToFullDto(service.post(in));
 	}
 
 	@PutMapping
 	public UtilisateurFull put(@RequestBody UtilisateurForm in) {
-		return mapper.toFullDto(service.put(in));
+		return mapper.mapToFullDto(service.put(in));
 	}
 
 	@DeleteMapping(value = "/{id")

@@ -51,7 +51,7 @@ public class Utilisateur extends AbstractCommun {
 	@OneToMany(targetEntity = Place.class, fetch = FetchType.LAZY, mappedBy = "utilisateur")
 	private List<Place> places;
 
-	@OneToMany(targetEntity = Notation.class, fetch = FetchType.LAZY, mappedBy = "utilisateur")
+	@OneToMany(targetEntity = Notation.class, fetch = FetchType.LAZY, mappedBy = "juge")
 	private List<Notation> notations;
 
 }

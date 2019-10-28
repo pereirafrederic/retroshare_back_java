@@ -9,11 +9,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import org.joda.time.LocalDate;
+import org.joda.time.DateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.pereirafrederic.retroshare.model.dto.NomDto;
+import com.pereirafrederic.retroshare.model.validation.date.Age;
+import com.pereirafrederic.retroshare.model.validation.date.Past;
 
 @Getter
 @Setter
@@ -31,7 +34,10 @@ public class UtilisateurLight extends NomDto {
 	private String pseudo;
 
 	@NotNull
-	private LocalDate dateNaissance;
+	@Past
+	@Age(min = 18, max = 100)
+	@JsonFormat(pattern = "YYYY-mm-dd")
+	private DateTime dateNaissance;
 
 	@NotNull
 	@NotBlank
